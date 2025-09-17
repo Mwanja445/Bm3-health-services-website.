@@ -1,0 +1,51 @@
+<!-- Add this to your services section or as a separate page -->
+<section id="payment">
+    <div class="container">
+        <div class="section-title">
+            <h2>Secure Payment</h2>
+            <p>Pay for your services securely online</p>
+        </div>
+        <div class="appointment-form">
+            <form id="payment-form">
+                <div class="form-group">
+                    <label for="card-number">Card Number</label>
+                    <input type="text" id="card-number" placeholder="1234 5678 9012 3456" required>
+                </div>
+                <div style="display: flex; gap: 20px;">
+                    <div class="form-group" style="flex: 1;">
+                        <label for="expiry">Expiry Date</label>
+                        <input type="text" id="expiry" placeholder="MM/YY" required>
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label for="cvv">CVV</label>
+                        <input type="text" id="cvv" placeholder="123" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="amount">Amount</label>
+                    <input type="number" id="amount" placeholder="0.00" required>
+                </div>
+                <div class="form-group">
+                    <label for="service-payment">Service</label>
+                    <select id="service-payment" required>
+                        <option value="">Select a service</option>
+                        <option value="consultation">Online Consultation ($50)</option>
+                        <option value="pharmacy">Pharmacy Delivery</option>
+                        <option value="nursing">Nursing Care ($80/hour)</option>
+                        <option value="testing">Home Testing ($120)</option>
+                        <option value="counseling">Counseling ($75/session)</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn" style="width: 100%">Pay Now</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.getElementById('payment-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('This would integrate with a payment processor like Stripe or PayPal in a real implementation.');
+        // In a real implementation, this would connect to a payment gateway
+    });
+</script>

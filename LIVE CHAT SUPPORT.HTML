@@ -1,0 +1,46 @@
+<!-- Add this to your HTML before </body> -->
+<div id="chat-widget" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+    <div id="chat-box" style="display: none; width: 300px; height: 400px; background: white; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+        <div style="background: var(--primary); color: white; padding: 15px; border-top-left-radius: 10px; border-top-right-radius: 10px; display: flex; justify-content: space-between;">
+            <h3 style="margin: 0;">Chat Support</h3>
+            <button id="close-chat" style="background: none; border: none; color: white; cursor: pointer;">X</button>
+        </div>
+        <div id="chat-messages" style="height: 300px; padding: 10px; overflow-y: auto;"></div>
+        <div style="padding: 10px; border-top: 1px solid #eee;">
+            <input type="text" id="chat-input" placeholder="Type your message..." style="width: 70%; padding: 8px;">
+            <button id="send-message" style="padding: 8px 15px; background: var(--primary); color: white; border: none; border-radius: 4px; cursor: pointer;">Send</button>
+        </div>
+    </div>
+    <button id="chat-button" style="background: var(--primary); color: white; border: none; border-radius: 50%; width: 60px; height: 60px; cursor: pointer; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
+        <i class="fas fa-comment"></i>
+    </button>
+</div>
+
+<script>
+    document.getElementById('chat-button').addEventListener('click', function() {
+        document.getElementById('chat-box').style.display = 'block';
+        document.getElementById('chat-button').style.display = 'none';
+    });
+    
+    document.getElementById('close-chat').addEventListener('click', function() {
+        document.getElementById('chat-box').style.display = 'none';
+        document.getElementById('chat-button').style.display = 'block';
+    });
+    
+    // Basic chat functionality
+    document.getElementById('send-message').addEventListener('click', function() {
+        const input = document.getElementById('chat-input');
+        const message = input.value.trim();
+        if (message) {
+            const messagesContainer = document.getElementById('chat-messages');
+            messagesContainer.innerHTML += `<div style="margin-bottom: 10px;"><strong>You:</strong> ${message}</div>`;
+            input.value = '';
+            
+            // Auto-reply after a short delay
+            setTimeout(function() {
+                messagesContainer.innerHTML += `<div style="margin-bottom: 10px; color: var(--primary);"><strong>Support:</strong> Thank you for your message. Our team will respond shortly.</div>`;
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }, 1000);
+        }
+    });
+</script>
